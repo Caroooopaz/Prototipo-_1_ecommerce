@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiski - Plataformas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* NAVBAR */
+        nav {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            margin: 0 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #27ae60;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .btn-outline {
+            border: 2px solid #27ae60;
+            background-color: transparent;
+            color: #27ae60;
+        }
+        
+        .btn-outline:hover {
+            background-color: #e8f5e9;
+        }
+        
+        .btn-primary {
+            border: 2px solid #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #219653;
+            border-color: #219653;
+        }
+        
+        /* CONTENIDO PRINCIPAL */
+        main {
+            flex: 1;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* SECCIÓN DE TARJETAS */
+        .cards-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .cards-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .card-special {
+            background-color: #f5f9f5;
+            border: 1px dashed #27ae60;
+            border-radius: 8px;
+            padding: 25px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 250px;
+        }
+        
+        .card-special h3 {
+            font-size: 1.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .card-special p {
+            color: #555;
+            margin-bottom: 20px;
+            max-width: 250px;
+            line-height: 1.6;
+        }
+        
+        .card-special-link {
+            color: #27ae60;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            width: 350px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .card-with-image {
+            padding-top: 180px;
+        }
+        
+        .card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .card h3 {
+            font-size: 1.3rem;
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .card-link {
+            color: #27ae60;
+            font-weight: 600;
+            text-decoration: none;
+            align-self: flex-start;
+        }
+        
+        /* SECCIÓN BUSINESS PLANS */
+        .business-plans {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .business-plans-title {
+            font-size: 2rem;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .business-plans-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .business-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            width: 350px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .business-card h2 {
+            font-size: 1.3rem;
+            color: #000000;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .business-card h2 i {
+            color: #27ae60;
+            font-size: 1.2rem;
+        }
+        
+        .business-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        /* SECCIÓN BENEFICIOS */
+        .benefits-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .benefits-title {
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 20px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f5f9f5;
+        }
+        
+        .benefit-check {
+            color: white;
+            background-color: #27ae60;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-text {
+            color: #555;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        /* SECCIÓN COTIZACIÓN */
+        .quote-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            width: calc(100% - 40px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quote-title {
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: left; /* Cambiado a izquierda */
+        }
+        
+        .quote-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #27ae60;
+        }
+        
+        .example-text {
+            font-size: 14px;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            grid-column: span 2;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #219653;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: white;
+            padding: 40px 20px;
+            margin-top: auto;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #27ae60;
+        }
+        
+        .copyright {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .cards-row, .business-plans-cards, .benefits-grid {
+                flex-wrap: wrap;
+            }
+            
+            .card, .card-special, .business-card {
+                width: calc(50% - 10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 10px 0;
+            }
+            
+            .card, .card-special, .business-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .cards-container, .business-plans, .benefits-section, .quote-section {
+                padding: 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+            
+            .quote-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .submit-btn {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">hiski</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Para empresas</a></li>
+            <li><a href="#">Precios</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-outline">Crear cuenta</button>
+            <button class="btn btn-primary">Iniciar sesión</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- SECCIÓN DE TARJETAS -->
+        <div class="cards-container">
+            <div class="cards-row">
+                <div class="card-special">
+                    <h3>Plataforma interna de eLearning</h3>
+                    <p>Plataformas internas hechas a medida con tus colores institucionales y logo.</p>
+                    <a href="#" class="card-special-link">Ver planes</a>
+                </div>
+                
+                <div class="card card-with-image">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Plataforma eLearning" class="card-img">
+                    <h3>Plataforma interna de eLearning</h3>
+                    <p>Plataformas internas hechas a medida con tus colores institucionales y logo.</p>
+                    <a href="#" class="card-link">Ver planes</a>
+                </div>
+                
+                <div class="card card-with-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Plataforma eLearning" class="card-img">
+                    <h3>Plataforma interna de eLearning</h3>
+                    <p>Plataformas internas hechas a medida con tus colores institucionales y logo.</p>
+                    <a href="#" class="card-link">Ver planes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN BUSINESS PLANS -->
+        <section class="business-plans">
+            <h1 class="business-plans-title">Planes para Empresas</h1>
+            <p style="margin-bottom: 30px;">Impulsa el crecimiento de tu equipo con capacitaciones personalizadas en logística. Ofrecemos planes flexibles que se adaptan a las necesidades de tu empresa, desde pequeñas startups hasta grandes corporaciones.</p>
+            
+            <div class="business-plans-cards">
+                <div class="business-card">
+                    <h2><i class="fas fa-chart-line"></i> Seguimiento del progreso</h2>
+                    <p>Monitorea el avance de tus empleados y el impacto de la capacitación en su desempeño.</p>
+                </div>
+                
+                <div class="business-card">
+                    <h2><i class="fas fa-laptop"></i> Acceso flexible</h2>
+                    <p>Acceso a la plataforma 24/7 desde cualquier dispositivo, para que tus empleados aprendan a su propio ritmo.</p>
+                </div>
+                
+                <div class="business-card">
+                    <h2><i class="fas fa-cogs"></i> Capacitación a medida</h2>
+                    <p>Diseñamos programas de capacitación específicos para tu industria y objetivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN BENEFICIOS -->
+        <section class="benefits-section">
+            <h2 class="benefits-title">Beneficios de nuestros planes</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span class="benefit-text">Selección de cursos específicos</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span class="benefit-text">Creación de rutas de aprendizaje personalizadas</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span class="benefit-text">Reportes detallados de progreso y resultados</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span class="benefit-text">Integración con sistemas de gestión de aprendizaje (LMS)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN COTIZACIÓN -->
+        <section class="quote-section">
+            <h2 class="quote-title">Solicita una cotización</h2>
+            <form class="quote-form">
+                <div class="form-group">
+                    <label for="company">Nombre de la empresa</label>
+                    <input type="text" id="company" placeholder="ej: Mattel S.A.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">Nombre del contacto</label>
+                    <input type="text" id="contact" placeholder="ej: Jorge Molina">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="ej: jmolina@mail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" placeholder="ej: +56 9 1234 5678">
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" placeholder="Cuéntenos..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="employees">Número de empleados a capacitar</label>
+                    <input type="number" id="employees" placeholder="ej: 10">
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar solicitud</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos de servicio</a>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Contáctanos</a>
+        </div>
+        <p class="copyright">©2025 Shiski. Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiski - Nuestros Planes</title>
+    <style>
+        /* styles.css - Versión Verde */
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f5f9f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 20px auto;
+            width: calc(100% - 40px);
+        }
+
+        /* Logo personalizado */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        /* Lista de enlaces */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #27ae60;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Contenedor de botones */
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* Estilos para botones */
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-outline {
+            border: 2px solid #27ae60;
+            background-color: transparent;
+            color: #27ae60;
+        }
+
+        .btn-outline:hover {
+            background-color: #e8f5e9;
+        }
+
+        .btn-primary {
+            border: 2px solid #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #219653;
+            border-color: #219653;
+        }
+
+        /* Contenido principal */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #636e72;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Estilos para los planes */
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #27ae60;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-card h2 {
+            font-size: 1.5rem;
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+
+        .plan-card p {
+            color: #636e72;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 20px 0 10px;
+        }
+
+        .monthly-price {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .features-list {
+            margin: 25px 0;
+            padding-left: 0;
+        }
+
+        .features-list li {
+            list-style: none;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #000;
+        }
+
+        .features-list li:before {
+            content: "✔";
+            color: #000;
+            position: absolute;
+            left: 0;
+        }
+
+        .plan-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #27ae60;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            border: 2px solid #27ae60;
+        }
+
+        .plan-button:hover {
+            background-color: #219653;
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #27ae60;
+        }
+
+        .copyright {
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .plan-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .footer-links {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">hiski</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Para empresas</a></li>
+            <li><a href="#">Precios</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-outline">Crear cuenta</button>
+            <button class="btn btn-primary">Iniciar sesión</button>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Nuestros Planes</h1>
+        
+        <p class="intro-text">
+            Impulsa el crecimiento de tu equipo con capacitaciones personalizadas en logística. Ofrecemos planes flexibles que se adaptan a las necesidades de tu empresa, desde pequeñas startups hasta grandes corporaciones.
+        </p>
+        
+        <div class="plans-container">
+            <div class="plan-card">
+                <h2>Plan PYME</h2>
+                <p>Acceso a plataforma diseñada a la medida de tu empresa.</p>
+                <p>Para empresas de hasta 99 trabajadores.</p>
+                
+                <div class="price">UF 360/año</div>
+                <div class="monthly-price">UF 30/mes</div>
+                
+                <ul class="features-list">
+                    <li>Acceso a plataforma</li>
+                    <li>Materiales descargables</li>
+                    <li>Soporte por correo electrónico</li>
+                    <li>Cursos certificados</li>
+                </ul>
+                
+                <a href="#" class="plan-button">Seleccionar Plan →</a>
+            </div>
+            
+            <div class="plan-card">
+                <h2>Plan Grandes Empresas</h2>
+                <p>Acceso a plataforma diseñada a la medida de tu empresa.</p>
+                <p>Para empresas desde 100 trabajadores.</p>
+                
+                <div class="price">UF 360/año</div>
+                <div class="monthly-price">UF 30/mes</div>
+                
+                <ul class="features-list">
+                    <li>Acceso a plataforma</li>
+                    <li>Materiales descargables</li>
+                    <li>Soporte por correo electrónico</li>
+                    <li>Cursos certificados</li>
+                </ul>
+                
+                <a href="#" class="plan-button">Seleccionar Plan →</a>
+            </div>
+            
+            <div class="plan-card">
+                <h2>Plan a la medida</h2>
+                <p>Acceso a plataforma diseñada a la medida de tu empresa.</p>
+                <p>Para empresas de hasta 100 trabajadores.</p>
+                
+                <ul class="features-list">
+                    <li>Acceso a plataforma</li>
+                    <li>Materiales descargables</li>
+                    <li>Soporte por correo electrónico</li>
+                    <li>Cursos certificados</li>
+                </ul>
+                
+                <a href="#" class="plan-button">Seleccionar Plan →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos de servicio</a>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Contáctanos</a>
+        </div>
+        <p class="copyright">©2025 Shiski. Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

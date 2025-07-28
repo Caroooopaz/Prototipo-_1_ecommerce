@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiski - Soluciones Empresariales</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f5f9f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Barra de navegación mejorada */
+        nav {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            margin: 0 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #27ae60;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-outline {
+            border: 2px solid #27ae60;
+            background-color: transparent;
+            color: #27ae60;
+        }
+
+        .btn-outline:hover {
+            background-color: #e8f5e9;
+        }
+
+        .btn-primary {
+            border: 2px solid #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #219653;
+            border-color: #219653;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .subtitle-box {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            color: #2d3436;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 30px;
+        }
+
+        .image-container {
+            flex: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid #27ae60;
+        }
+
+        .cta-button:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .arrow {
+            margin-left: 8px;
+            font-weight: bold;
+        }
+
+        /* Panel Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-panel {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-top: 4px solid #27ae60;
+            width: 100%;
+        }
+
+        .main-panel h2 {
+            font-size: 1.8rem;
+            color: #27ae60;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .inner-cards {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .inner-card {
+            background: #f8fbf9;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 3px solid #27ae60;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .individual-panels {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #27ae60;
+            flex: 1;
+            min-width: 0;
+        }
+
+        h3 {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        p {
+            color: #636e72;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #636e72;
+            margin-bottom: 10px;
+        }
+
+        .category-tag.highlight {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .featured .article-image {
+            height: 250px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #27ae60;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #27ae60;
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2d3436;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #27ae60;
+        }
+
+        .client-details {
+            flex: 1;
+        }
+
+        .client-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 5px;
+        }
+
+        .client-position {
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.8rem;
+            color: #2d3436;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .cta-description {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #636e72;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background-color: #27ae60;
+            margin: 40px auto;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 30px 20px;
+            margin-top: auto;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #27ae60;
+        }
+
+        .copyright {
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 12px 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .content-wrapper {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 10px 0;
+            }
+            
+            .content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1, .cta-title {
+                font-size: 2.2rem;
+            }
+            
+            .inner-cards, .individual-panels {
+                flex-direction: column;
+            }
+            
+            .inner-card, .panel {
+                width: 100%;
+            }
+            
+            .blog-grid, .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                gap: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-buttons {
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .hero, .cta-section {
+                padding: 60px 20px;
+            }
+            
+            h1, .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav mejorado -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">hiski</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Para empresas</a></li>
+            <li><a href="#">Precios</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-outline">Crear cuenta</button>
+            <button class="btn btn-primary">Iniciar sesión</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="subtitle-box">Capacita a tu equipo</div>
+            
+            <h1>UNA SOLUCIÓN PARA TU EMPRESA</h1>
+            
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p class="description">
+                        Ofrecemos planes corporativos para capacitar a todo tu personal. Realiza un seguimiento del progreso, 
+                        gestiona equipos y obtén certificaciones grupales. Potencia el activo más importante: tu gente.
+                    </p>
+                    <a href="#" class="cta-button">Comenzar <span class="arrow">→</span></a>
+                </div>
+                
+                <div class="image-container">
+                    <img src="Gemini_Generated_Image_44ezo744ezo744ez.png" alt="Equipo capacitándose" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Section -->
+        <div class="container">
+            <div class="main-panel">
+                <h2>Panel de Administración</h2>
+                <div class="inner-cards">
+                    <div class="inner-card">
+                        <h3>Gestión de Usuarios</h3>
+                        <p>Administra perfiles, roles y permisos de todos los miembros de tu organización.</p>
+                    </div>
+                    <div class="inner-card">
+                        <h3>Asignación de Cursos</h3>
+                        <p>Distribuye capacitaciones por departamento, equipo o individuo.</p>
+                    </div>
+                    <div class="inner-card">
+                        <h3>Control de Accesos</h3>
+                        <p>Configura niveles de seguridad y restricciones personalizadas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="individual-panels">
+                <div class="panel">
+                    <h3>Reportes de Avance</h3>
+                    <p>Monitorea el desempeño y la finalización de cursos con métricas detalladas.</p>
+                </div>
+                <div class="panel">
+                    <h3>Precios por Volumen</h3>
+                    <p>Planes flexibles y escalables que se adaptan a tu presupuesto.</p>
+                </div>
+                <div class="panel">
+                    <h3>Certificaciones</h3>
+                    <p>Genera diplomas automáticos al completar programas de formación.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="container">
+            <h1>Blog</h1>
+            
+            <div class="blog-grid">
+                <!-- Artículo 1 (Destacado) -->
+                <article class="article-card featured">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="article-content">
+                        <div>
+                            <span class="category-tag">Logística</span>
+                            <span class="category-tag highlight">Tecnología</span>
+                        </div>
+                        <h2>Las 5 tendencias clave que están redefiniendo la logística en 2025</h2>
+                        <p class="article-excerpt">La logística está evolucionando rápidamente en respuesta a los cambios tecnológicos, económicos y ambientales. En 2025, destacan cinco tendencias que transformarán el sector...</p>
+                    </div>
+                </article>
+                
+                <!-- Artículo 2 -->
+                <article class="article-card">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1677442135136-760c813cd9d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="article-content">
+                        <span class="category-tag">Logística</span>
+                        <h2>Cómo la inteligencia artificial está revolucionando la cadena de suministro</h2>
+                        <p class="article-excerpt">La inteligencia artificial (IA) está transformando la logística al permitir una toma de decisiones más rápida y precisa. Desde la predicción de la demanda hasta rutas óptimas...</p>
+                    </div>
+                </article>
+                
+                <!-- Artículo 3 -->
+                <article class="article-card">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="article-content">
+                        <span class="category-tag">Logística</span>
+                        <h2>Logística verde: el compromiso necesario para el futuro</h2>
+                        <p class="article-excerpt">La sostenibilidad dejó de ser una opción para convertirse en un pilar de la logística moderna. Reducir la huella de carbono mediante flotas eléctricas y embalajes ecológicos...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="container">
+            <h1>Soluciones E-Learning para tu Empresa</h1>
+            
+            <div class="testimonials">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">”</div>
+                    <p class="testimonial-text">
+                        La plataforma de Shiski ha sido fundamental para mejorar la eficiencia de nuestras bodegas. Los ejemplos prácticos y los escenarios del mundo real hicieron que el proceso de aprendizaje fuera atractivo y efectivo.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Chen" class="client-avatar">
+                        <div class="client-details">
+                            <div class="client-name">Sarah Chen</div>
+                            <div class="client-position">Gerente de Operaciones en Walmart</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">”</div>
+                    <p class="testimonial-text">
+                        Con Shiski redujimos un 40% el tiempo de capacitación de nuestro personal. Los módulos interactivos permitieron una retención del conocimiento mucho mayor que con métodos tradicionales.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Méndez" class="client-avatar">
+                        <div class="client-details">
+                            <div class="client-name">Carlos Méndez</div>
+                            <div class="client-position">Director de Logística en MercadoLibre</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">”</div>
+                    <p class="testimonial-text">
+                        Implementamos Shiski en 15 países simultáneamente. La escalabilidad de la plataforma y los reportes automatizados nos dieron visibilidad completa del progreso de cada equipo.
+                    </p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ana Rodríguez" class="client-avatar">
+                        <div class="client-details">
+                            <div class="client-name">Ana Rodríguez</div>
+                            <div class="client-position">VP de Talento en Amazon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h1 class="cta-title">Impulsa el éxito de tu Negocio con Programas de Formación Exclusivos</h1>
+            
+            <p class="cta-description">
+                Invierte en el crecimiento de tu talento: Diseñamos programas de capacitación exclusivos que se alinean con tus objetivos estratégicos. Ofrecemos soluciones escalables, desde cursos individuales hasta academias corporativas completas, con seguimiento y acompañamiento experto.
+            </p>
+            
+            <hr class="divider">
+            
+            <a href="#" class="cta-button">Contáctanos</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos de servicio</a>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Contáctanos</a>
+        </div>
+        <p class="copyright">©2025 Shiski. Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
