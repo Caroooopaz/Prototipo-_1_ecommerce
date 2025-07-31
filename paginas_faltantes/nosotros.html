@@ -176,13 +176,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
         }
 
         .team-row {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             width: 100%;
         }
 
@@ -190,9 +190,12 @@
             background: white;
             border-radius: 12px;
             padding: 30px;
-            width: 220px;
+            width: 280px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .team-member:hover {
@@ -200,34 +203,37 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .member-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            border: 3px solid #f1f8f1;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .member-info h2 {
-            font-size: 1.2rem;
-            color: #2d3436;
-            margin-bottom: 5px;
-        }
-
-        .member-info p {
+        .member-role {
             color: #27ae60;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f1f8f1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Sección Misión y Visión */
         .mission-vision-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .mission, .vision {
@@ -239,7 +245,7 @@
         }
 
         .mission h3, .vision h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #27ae60;
             margin-bottom: 15px;
             text-align: center;
@@ -247,7 +253,7 @@
 
         .mission p, .vision p {
             color: #636e72;
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.6;
             text-align: center;
         }
@@ -285,6 +291,16 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .team-row {
+                flex-wrap: wrap;
+            }
+            
+            .team-member {
+                width: 250px;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -303,19 +319,20 @@
                 justify-content: center;
             }
 
-            .team-row {
-                flex-direction: column;
-                align-items: center;
+            .team-member {
+                width: 220px;
+                padding: 25px;
             }
 
-            .team-member {
-                width: 100%;
-                max-width: 250px;
+            .member-photo {
+                width: 150px;
+                height: 150px;
             }
 
             .mission-vision-container {
                 flex-direction: column;
                 align-items: center;
+                gap: 30px;
             }
 
             .mission, .vision {
@@ -326,16 +343,18 @@
 
         @media (max-width: 480px) {
             .team-member {
+                width: 100%;
+                max-width: 280px;
                 padding: 20px;
             }
 
             .member-photo {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
             }
 
             .mission, .vision {
-                padding: 20px;
+                padding: 25px;
             }
         }
     </style>
@@ -370,49 +389,39 @@
                 <!-- Primera fila (2 miembros) -->
                 <div class="team-row">
                     <div class="team-member">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Canila Cáceres" class="member-photo">
-                        <div class="member-info">
-                            <h2>CANILA CÁCERES</h2>
-                            <p>FULLSTACK DEVELOPER</p>
-                        </div>
+                        <p class="member-role">BACKEND DEVELOPER</p>
+                        <h2 class="member-name">CAROLINA MUÑOZ</h2>
+                        <img src="img/carolina.jpg" alt="carolina" class="member-photo">
                     </div>
                     
                     <div class="team-member">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Fabian Vargas" class="member-photo">
-                        <div class="member-info">
-                            <h2>FABIAN VARGAS</h2>
-                            <p>PRODUCT OWNER</p>
-                        </div>
+                        <p class="member-role">FULL STACK DEVELOPER</p>
+                        <h2 class="member-name">CAMILA CACERES</h2>
+                        <img src="img/camila.jpg" alt="camila" class="member-photo">
                     </div>
                 </div>
                 
                 <!-- Segunda fila (1 miembro centrado) -->
                 <div class="team-row">
                     <div class="team-member">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="María Rodríguez" class="member-photo">
-                        <div class="member-info">
-                            <h2>MARÍA RODRÍGUEZ</h2>
-                            <p>UX/UI DESIGNER</p>
-                        </div>
+                        <p class="member-role">PRODUCT OWNER</p>
+                        <h2 class="member-name">FABIAN VARGAS</h2>
+                        <img src="img/fabian.jpg" alt="fabian" class="member-photo">
                     </div>
                 </div>
                 
                 <!-- Tercera fila (2 miembros) -->
                 <div class="team-row">
                     <div class="team-member">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Carlos Méndez" class="member-photo">
-                        <div class="member-info">
-                            <h2>CARLOS MÉNDEZ</h2>
-                            <p>BACKEND DEVELOPER</p>
-                        </div>
+                        <p class="member-role">FULL STACK DEVELOPER</p>
+                        <h2 class="member-name">FRANCO RAMIREZ</h2>
+                        <img src="img/franco.jpg" alt="franco" class="member-photo">
                     </div>
                     
                     <div class="team-member">
-                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Laura Fernández" class="member-photo">
-                        <div class="member-info">
-                            <h2>LAURA FERNÁNDEZ</h2>
-                            <p>FRONTEND LEAD</p>
-                        </div>
+                        <p class="member-role">QA</p>
+                        <h2 class="member-name">TAMARA ESCOBAR</h2>
+                        <img src="img/tamara.jpg" alt="tamara" class="member-photo">
                     </div>
                 </div>
             </div>
